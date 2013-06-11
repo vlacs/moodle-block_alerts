@@ -18,7 +18,7 @@ class block_course_copy_alerts extends alerts {
         }
 
         foreach($pushes as $push) {
-            $push_instances = $course_copy->fetch_pending_push_instances($push->id, $course_id);
+            $push_instances = $course_copy->fetch_push_instances($push->id, true);
             if(!$push_instances) {
                 // Skip over this odd occurance.
                 // TODO Get rid of this error.

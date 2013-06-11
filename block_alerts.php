@@ -27,7 +27,7 @@ class block_alerts extends block_base {
             $url->param('user_id', $USER->id);
             $url->param('course_id', $COURSE->id);
             $url = $url->out();
-            $alerts_str = "<a href=\"{$url}\">$alerts_str</a>";
+            $alerts_str = "<span style=\"background-color: #FFFF66\"><a href=\"{$url}\">$alerts_str</a></span>";
 
             $this->content->text = $alerts_str;
         }
