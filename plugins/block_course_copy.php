@@ -20,7 +20,7 @@ class block_course_copy_alerts extends alerts {
             return false;
         }
         foreach($push_instances as $pi) {
-            $push = $course_copy::sql_fetch_push($pi->push_id);
+            $push = course_copy::sql_fetch_push($pi->push_id);
             $push = get_record('block_course_copy_push', 'id', $pi->push_id);
             $dest_course_id = $pi->dest_course_id;
             // We don't let pushes go if there are multiple CMs with the 
