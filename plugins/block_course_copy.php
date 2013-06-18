@@ -5,14 +5,16 @@ require_once("{$CFG->dirroot}/blocks/course_copy/lib.php");
 class block_course_copy_alerts extends alerts {
 
     public static function fetch_alerts($course_id, $user_id) {
+        if(!class_exists('course_copy')) {
+            return false;
+        }
         $context = get_context_instance(CONTEXT_COURSE, $course_id);
         $is_student = true;
         if(has_capability('mod/quiz:grade', $context, $user_id)) {
             $is_student = false;
         }
         $alerts = array();
-        $course_copy = course_copy::create();
-        $push_instances = $course_copy->fetch_pending_push_instances_by_child_course($course_id);
+        $push_instances = course_copy::fetch_pending_push_instances_by_child_course($course_id);
 
         if(!$push_instances) {
             return false;
